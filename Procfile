@@ -1,1 +1,1 @@
-web: gradle bootRun
+web: java -Dserver.port=$PORT -jar build/libs/denizyavas-1.0.0.jar
