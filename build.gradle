@@ -50,3 +50,7 @@ task wrapper(type: Wrapper) {
 task stage {
   dependsOn jar
 }
+
+jar{
+    manifest.attributes "Main-Class": "hello.Application"
+}
