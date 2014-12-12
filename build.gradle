@@ -44,7 +44,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.0'
 }
 
 task stage {
@@ -53,8 +53,4 @@ task stage {
 
 jar{
     manifest.attributes "Main-Class": "hello.Application"
-}
-
-sourceSets{
-    main.groovy.srcDir "src/main/groovy"
 }
