@@ -1,11 +1,18 @@
+import com.github.jengelman.gradle.plugins.shadow.transformers.AppendingTransformer
+
 buildscript {
     repositories {
         mavenCentral()
+        maven { url 'https://mvn.sony-europe.com/content/groups/global' }
         maven { url 'http://repo.spring.io/libs-snapshot' }
         maven { url "https://oss.sonatype.org/content/groups/public" }
+        maven { url "http://oss.jfrog.org/repo" }
+        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url 'http://repo.spring.io/libs-release-remote' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
+        classpath "com.github.jengelman.gradle.plugins:shadow:1.0.2"
     }
 }
 
@@ -52,11 +59,23 @@ task stage {
 }
 
 jar{
-    from configurations.compile.collect [zipTree it}
+    from configurations.compile.collect {zipTree it}
     manifest.attributes "Main-Class": "hello2.Application"
 }
 
 sourceSets{
     main.groovy.srcDir "src/main/groovy"
     main.java.srcDir "src/main/java"
+}
+
+shadowJar {
+    baseName = "${project.name}-app"
+    archiveName = "${baseName}.jar"
+    classifier = group
+    transform(AppendingTransformer) {
+        resource = "META-INF/spring.handlers"
+    }
+    transform(AppendingTransformer) {
+        resource = "META-INF/spring.schemas"
+    }
 }
