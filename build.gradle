@@ -67,15 +67,3 @@ sourceSets{
     main.groovy.srcDir "src/main/groovy"
     main.java.srcDir "src/main/java"
 }
-
-shadowJar {
-    baseName = "${project.name}-app"
-    archiveName = "${baseName}.jar"
-    classifier = group
-    transform(AppendingTransformer) {
-        resource = "META-INF/spring.handlers"
-    }
-    transform(AppendingTransformer) {
-        resource = "META-INF/spring.schemas"
-    }
-}
