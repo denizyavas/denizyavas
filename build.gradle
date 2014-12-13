@@ -48,6 +48,8 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
 }
 
+task stage(dependsOn: ['clean', 'installApp'])
+
 task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
