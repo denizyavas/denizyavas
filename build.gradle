@@ -1,35 +1,30 @@
-import com.github.jengelman.gradle.plugins.shadow.transformers.AppendingTransformer
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'heroku'
+
+version = '1.0.0'
 
 buildscript {
     repositories {
         mavenCentral()
-        maven { url 'https://mvn.sony-europe.com/content/groups/global' }
-        maven { url 'http://repo.spring.io/libs-snapshot' }
-        maven { url "https://oss.sonatype.org/content/groups/public" }
-        maven { url "http://oss.jfrog.org/repo" }
-        maven { url 'http://repo.spring.io/plugins-release' }
-        maven { url 'http://repo.spring.io/libs-release-remote' }
+        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
-        classpath "com.github.jengelman.gradle.plugins:shadow:1.0.2"
+        classpath 'com.wiredforcode:gradle-heroku-plugin:1.0.0'
     }
 }
 
-repositories {
-    mavenCentral()
-    maven { url 'http://repo.spring.io/libs-snapshot' }
-}
-
-apply plugin: 'java'
-apply plugin: 'groovy'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
-
 jar {
     baseName = 'denizyavas'
-    version = '1.0.0'
+    manifest.attributes "Main-Class": "hello2.Application"
+
+    doFirst {
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
 }
 
 repositories {
@@ -37,7 +32,6 @@ repositories {
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.6'
     // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
@@ -48,27 +42,25 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
     testCompile("junit:junit")
-    
-    
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.0'
 }
 
-task stage {
-  dependsOn jar
-}
-
-jar{
-    doFirst {
-        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } } 
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': version,
+                'Main-Class': 'hello2.Application'
     }
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
-    manifest.attributes "Main-Class": "hello2.Application"
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
 
-sourceSets{
-    // main.groovy.srcDir "src/main/groovy"
-    main.java.srcDir "src/main/java"
+heroku {
+    apiKey = 'b0f44cd0-c4b6-4b0c-b0f8-5c115fcea3aa'
+
+    appName = 'denizpage'
 }
