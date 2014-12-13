@@ -5,7 +5,8 @@ apply plugin: 'spring-boot'
 apply plugin: 'heroku'
 
 version = '1.0.0'
-
+baseName = 'denizyavas'
+ 
 buildscript {
     repositories {
         mavenCentral()
@@ -15,16 +16,6 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
         classpath 'com.wiredforcode:gradle-heroku-plugin:1.0.0'
     }
-}
-
-jar {
-    baseName = 'denizyavas'
-    manifest.attributes "Main-Class": "hello2.Application"
-
-    doFirst {
-        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    }
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
 }
 
 repositories {
