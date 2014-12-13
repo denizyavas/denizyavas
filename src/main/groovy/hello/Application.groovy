@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration
  * author: TRYavasU
  * date: 12/12/2014
  */
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan
 class Application {
 
     static void main(args) {
