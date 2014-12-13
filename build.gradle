@@ -48,6 +48,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
     testCompile("junit:junit")
+    
+    
 }
 
 task wrapper(type: Wrapper) {
@@ -67,6 +69,6 @@ jar{
 }
 
 sourceSets{
-    main.groovy.srcDir "src/main/groovy"
+    // main.groovy.srcDir "src/main/groovy"
     main.java.srcDir "src/main/java"
 }
