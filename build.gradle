@@ -1,15 +1,9 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'spring-boot'
-apply plugin: 'heroku'
-
-version = '1.0.0'
- 
 buildscript {
     repositories {
         mavenCentral()
-        maven { url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins' }
+        maven {
+            url 'http://dl.bintray.com/vermeulen-mp/gradle-plugins'
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
@@ -17,12 +11,19 @@ buildscript {
     }
 }
 
-repositories {
-    mavenCentral()
+apply plugin: 'heroku'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'denizyavas'
+    version = '1.0.0'
 }
 
-jar{
-    baseName = 'denizyavas'
+repositories {
+    mavenCentral()
 }
 
 dependencies {
@@ -40,20 +41,6 @@ dependencies {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
-}
-
-task stage(dependsOn: ['clean', 'fatJar'])
-
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
-                'Implementation-Version': version,
-                'Main-Class': 'hello2.Application'
-    }
-    baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
-    with jar
 }
 
 heroku {
