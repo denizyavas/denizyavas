@@ -1,5 +1,6 @@
 package com.deniz.app.controller
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -12,17 +13,35 @@ import org.springframework.web.servlet.ModelAndView
 @RestController
 class ProfileController {
 
+    @Value('${profile.url.facebook}')
+    def facebookUrl
+
+    @Value('${profile.url.cv}')
+    def cvUrl
+
+    @Value('${profile.url.twitter}')
+    def twitterUrl
+
+    @Value('${profile.url.linkedin}')
+    def linkedinUrl
+
     @RequestMapping("/")
-    ModelAndView index() {
-        new ModelAndView("redirect:http://goo.gl/CsFh4R");
+    String index() {
+        "greetings from denizyavas.com"
     }
 
     @RequestMapping("/profile/{profile}")
     ModelAndView profile(@PathVariable("profile") String profile) {
-        if(profile){
-            new ModelAndView("redirect:https://www.facebook.com/denizyavas");
-        }else{
-            new ModelAndView("redirect:http://goo.gl/CsFh4R");
+        if (profile == "facebook") {
+            new ModelAndView("redirect:${facebookUrl}")
+        } else if (profile == "twitter") {
+            new ModelAndView("redirect:${twitterUrl}")
+        } else if (profile == "linkedin") {
+            new ModelAndView("redirect:${linkedinUrl}")
+            http://goo.gl/CsFh4Rhttp://goo.gl/CsFh4R        } else if (profile == "cv") {
+            new ModelAndView("redirect:${cvUrl}")
+        } else {
+            new ModelAndView("/")
         }
     }
 }

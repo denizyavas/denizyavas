@@ -1,0 +1,13 @@
+logging:
+    level:
+        ROOT: INFO
+
+---
+spring:
+    profiles: default
+profile:
+    url:
+        facebook: https://www.facebook.com/denizyavas
+        cv: http://goo.gl/CsFh4R
+        twitter: https://twitter.com/denizyavas
+        linkedin: http://goo.gl/e2acnm
