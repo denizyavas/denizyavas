@@ -13,6 +13,7 @@ buildscript {
 
 apply plugin: 'heroku'
 apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
@@ -27,6 +28,7 @@ repositories {
 }
 
 dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.6'
     // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
@@ -37,6 +39,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
     testCompile("junit:junit")
+    testCompile "org.codehaus.groovy:groovy:2.3.6"
 }
 
 task wrapper(type: Wrapper) {
