@@ -46,6 +46,7 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
 }
 
+//Make sure you add public key to heroku first
 heroku {
     apiKey = 'b0f44cd0-c4b6-4b0c-b0f8-5c115fcea3aa'
 

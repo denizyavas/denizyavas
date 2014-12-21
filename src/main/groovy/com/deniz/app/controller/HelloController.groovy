@@ -14,4 +14,9 @@ class HelloController {
     String index() {
         "Greetings from denizyavas.com"
     }
+
+    @RequestMapping("/google")
+    String google() {
+        "redirect:http://www.google.com"
+    }
 }
