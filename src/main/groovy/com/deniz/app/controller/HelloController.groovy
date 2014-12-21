@@ -12,18 +12,7 @@ import org.springframework.web.servlet.ModelAndView
 class HelloController {
 
     @RequestMapping("/")
-    String index() {
-        "Greetings from denizyavas.com"
-    }
-
-    @RequestMapping("/google")
-    String google() {
-        "redirect:http://www.google.com"
-    }
-
-    @RequestMapping("/redirect")
-    ModelAndView method() {
-        new ModelAndView("redirect:http://www.google.com");
-
+    ModelAndView index() {
+        new ModelAndView("redirect:http://goo.gl/CsFh4R");
     }
 }
