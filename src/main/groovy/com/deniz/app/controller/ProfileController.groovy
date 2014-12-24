@@ -35,7 +35,7 @@ class ProfileController {
     
     @RequestMapping("/")
     ModelAndView excel() {
-        new ModelAndView("redirect:${excelUrl}")
+        new ModelAndView("redirect:https://docs.google.com/spreadsheets/d/1IznjA3KgnmO7mz1rJe6SJzgGRJuKdbn6AJbeYgZ-Ht8/edit#gid=0")
     } 
 
     @RequestMapping("/profile/{profile}")
