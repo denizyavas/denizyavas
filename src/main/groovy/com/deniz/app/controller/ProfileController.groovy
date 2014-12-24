@@ -25,10 +25,18 @@ class ProfileController {
     @Value('${profile.url.linkedin}')
     def linkedinUrl
 
-    @RequestMapping("/")
+    @Value('${profile.url.excel}')
+    def excelUrl
+
+    @RequestMapping("/greet")
     String index() {
         "greetings from denizyavas.com"
     }
+    
+    @RequestMapping("/")
+    ModelAndView excel() {
+        new ModelAndView("redirect:${excelUrl}")
+    } 
 
     @RequestMapping("/profile/{profile}")
     ModelAndView profile(@PathVariable("profile") String profile) {
