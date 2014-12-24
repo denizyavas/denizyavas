@@ -25,9 +25,6 @@ class ProfileController {
     @Value('${profile.url.linkedin}')
     def linkedinUrl
 
-    @Value('${profile.url.excel}')
-    def excelUrl
-
     @RequestMapping("/greet")
     String index() {
         "greetings from denizyavas.com"
