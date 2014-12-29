@@ -36,7 +36,7 @@ class ProfileController {
     } 
     
     @RequestMapping("/")
-    ModelAndView excel() {
+    ModelAndView index() {
         new ModelAndView("redirect:https://docs.google.com/document/d/12E5PP1uZXriz5snedKMrdc1IrRqNtVMwVm2x-mpjhNg/edit")
     } 
 
