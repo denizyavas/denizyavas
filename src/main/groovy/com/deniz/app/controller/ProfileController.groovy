@@ -30,9 +30,14 @@ class ProfileController {
         "greetings from denizyavas.com"
     }
     
-    @RequestMapping("/")
+    @RequestMapping("/excel")
     ModelAndView excel() {
         new ModelAndView("redirect:https://docs.google.com/spreadsheets/d/1IznjA3KgnmO7mz1rJe6SJzgGRJuKdbn6AJbeYgZ-Ht8/edit#gid=0")
+    } 
+    
+    @RequestMapping("/")
+    ModelAndView excel() {
+        new ModelAndView("redirect:https://docs.google.com/document/d/12E5PP1uZXriz5snedKMrdc1IrRqNtVMwVm2x-mpjhNg/edit")
     } 
 
     @RequestMapping("/profile/{profile}")
