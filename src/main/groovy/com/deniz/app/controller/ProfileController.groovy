@@ -26,7 +26,7 @@ class ProfileController {
     def linkedinUrl
 
     @RequestMapping("/greet")
-    String index() {
+    String greet() {
         "greetings from denizyavas.com"
     }
     
