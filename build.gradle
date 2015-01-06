@@ -35,6 +35,7 @@ dependencies {
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
     // end::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
