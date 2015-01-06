@@ -3,7 +3,7 @@ package com.deniz.app.controller
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.stereotype.Controller
 import org.springframework.web.servlet.ModelAndView
 import org.springframework.ui.Model
 
@@ -11,7 +11,7 @@ import org.springframework.ui.Model
  * author: TRYavasU
  * date: 21/12/2014
  */
-@RestController
+@Controller
 class ProfileController {
 
     @Value('${profile.url.facebook}')
@@ -64,7 +64,8 @@ class ProfileController {
             new ModelAndView("redirect:${twitterUrl}")
         } else if (profile == "linkedin") {
             new ModelAndView("redirect:${linkedinUrl}")
-            http://goo.gl/CsFh4Rhttp://goo.gl/CsFh4R        } else if (profile == "cv") {
+            http://goo.gl/CsFh4Rhttp://goo.gl/CsFh4R        
+        } else if (profile == "cv") {
             new ModelAndView("redirect:${cvUrl}")
         } else {
             new ModelAndView("/")
