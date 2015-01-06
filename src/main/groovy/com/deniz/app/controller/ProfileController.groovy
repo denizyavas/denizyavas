@@ -64,7 +64,7 @@ class ProfileController {
             new ModelAndView("redirect:${twitterUrl}")
         } else if (profile == "linkedin") {
             new ModelAndView("redirect:${linkedinUrl}")
-            http://goo.gl/CsFh4Rhttp://goo.gl/CsFh4R        
+            // http://goo.gl/CsFh4Rhttp://goo.gl/CsFh4R        
         } else if (profile == "cv") {
             new ModelAndView("redirect:${cvUrl}")
         } else {
