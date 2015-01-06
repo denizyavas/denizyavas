@@ -44,7 +44,17 @@ class ProfileController {
     ModelAndView index() {
         new ModelAndView("redirect:https://docs.google.com/document/d/12E5PP1uZXriz5snedKMrdc1IrRqNtVMwVm2x-mpjhNg/edit")
     } 
+    
+    @RequestMapping("/company")
+    String company(Model model) {
+        "company-home"
+    } 
 
+    @RequestMapping("/info")
+    String info() {
+        "denizyavas.com"
+    } 
+    
     @RequestMapping("/profile/{profile}")
     ModelAndView profile(@PathVariable("profile") String profile) {
         if (profile == "facebook") {
