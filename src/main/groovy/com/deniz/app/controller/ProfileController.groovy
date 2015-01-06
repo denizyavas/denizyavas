@@ -35,6 +35,11 @@ class ProfileController {
         new ModelAndView("redirect:https://docs.google.com/spreadsheets/d/1IznjA3KgnmO7mz1rJe6SJzgGRJuKdbn6AJbeYgZ-Ht8/edit#gid=0")
     } 
     
+    @RequestMapping("/odev")
+    ModelAndView odev() {
+        new ModelAndView("redirect:https://docs.google.com/presentation/d/1SLXbyKN62ngkB0DAJLWdrE8ZNzVlcjWCa1kC7JL_Q1g/edit#slide=id.p")
+    } 
+    
     @RequestMapping("/")
     ModelAndView index() {
         new ModelAndView("redirect:https://docs.google.com/document/d/12E5PP1uZXriz5snedKMrdc1IrRqNtVMwVm2x-mpjhNg/edit")
