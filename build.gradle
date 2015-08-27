@@ -6,40 +6,37 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
         classpath 'com.wiredforcode:gradle-heroku-plugin:1.0.0'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
     }
 }
 
 apply plugin: 'heroku'
 apply plugin: 'java'
-apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
+apply plugin: 'application'
+run {
+    args 'sample.txt'
+}
+
 jar {
     baseName = 'denizyavas'
-    version = '1.0.0'
+    version =  '1.0.0'
 }
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.6'
-    // tag::jetty[]
-    compile("org.springframework.boot:spring-boot-starter-web") {
-        exclude module: "spring-boot-starter-tomcat"
-    }
-    compile("org.springframework.boot:spring-boot-starter-jetty")
-    // end::jetty[]
-    // tag::actuator[]
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    // end::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("junit:junit")
-    testCompile "org.codehaus.groovy:groovy:2.3.6"
 }
 
 task wrapper(type: Wrapper) {
@@ -51,8 +48,4 @@ heroku {
     apiKey = 'b0f44cd0-c4b6-4b0c-b0f8-5c115fcea3aa'
 
     appName = 'denizpage'
-}
-
-task stage {
-    dependsOn 'build'
 }
