@@ -6,8 +6,8 @@ buildscript {
         }
     }
     dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
         classpath 'com.wiredforcode:gradle-heroku-plugin:1.0.0'
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE")
     }
 }
 
@@ -17,22 +17,14 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
-apply plugin: 'application'
-run {
-    args 'sample.txt'
-}
-
 jar {
-    baseName = 'deniz'
-    version =  '1.0.0'
+    baseName = 'denizyavas'
+    version = '1.0.0'
 }
 
 repositories {
     mavenCentral()
 }
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
@@ -51,5 +43,5 @@ heroku {
 }
 
 task stage {
-    dependsOn build
+    dependsOn 'build'
 }
