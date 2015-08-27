@@ -49,3 +49,7 @@ heroku {
 
     appName = 'denizpage'
 }
+
+task stage {
+    dependsOn build
+}
