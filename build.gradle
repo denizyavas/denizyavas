@@ -23,7 +23,7 @@ run {
 }
 
 jar {
-    baseName = 'denizyavas'
+    baseName = 'deniz'
     version =  '1.0.0'
 }
 
