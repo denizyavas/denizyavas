@@ -34,4 +34,18 @@ public class ImageServeController {
                 .body(new InputStreamResource(new FileInputStream(image)));
     }
 
+    @RequestMapping(value = "/imageSmall", method = RequestMethod.GET, produces = "image/png")
+    public ResponseEntity<InputStreamResource> downloadSmallImageFile(@RequestParam("name") String name)
+            throws IOException {
+
+        File image = new File("pics_s/" + name);
+
+        return ResponseEntity
+                .ok()
+                .contentLength(image.length())
+                .contentType(
+                        MediaType.parseMediaType("image/png"))
+                .body(new InputStreamResource(new FileInputStream(image)));
+    }
+
 }
