@@ -1,5 +1,6 @@
 package com.deniz.json;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,12 +10,14 @@ import java.util.Date;
 public class ImageJson {
     String smallUrl;
     String largeUrl;
-    Date date;
+    String dateText;
 
     public ImageJson(String smallUrl, String largeUrl, Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
         this.smallUrl = smallUrl;
         this.largeUrl = largeUrl;
-        this.date = date;
+        this.dateText = format.format(date);
     }
 
     public String getSmallUrl() {
@@ -33,11 +36,11 @@ public class ImageJson {
         this.largeUrl = largeUrl;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDateText() {
+        return dateText;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateText(String dateText) {
+        this.dateText = dateText;
     }
 }
