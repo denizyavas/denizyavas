@@ -14,7 +14,7 @@ public class Application {
 
     static String getHerokuWebPort() {
         String webPort = System.getenv("PORT");
-        if (!webPort.equals("")) {
+        if (webPort == null || webPort.equals("")) {
             webPort = "8080";
         }
         return webPort;
