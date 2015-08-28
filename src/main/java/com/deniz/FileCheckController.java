@@ -23,7 +23,10 @@ public class FileCheckController {
 
         ImageListJson imageList = new ImageListJson();
         for (final File fileEntry : folder.listFiles()) {
-            imageList.getImages().add(new ImageJson(fileEntry.getName(), fileEntry.getName(), new Date()));
+            String fileName = fileEntry.getName();
+            String dateText = fileName.substring(0, fileName.indexOf('_'));
+            Date date = new Date(Long.parseLong(dateText));
+            imageList.getImages().add(new ImageJson(fileName, fileName, date));
         }
         return imageList;
     }
